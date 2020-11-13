@@ -72,16 +72,12 @@ def handle_image(path, file):
 log.info('Inizialize list for image data')
 imageRows = []
 
-# dirtest = 'C:/Users/kevin/OneDrive/Studium/4_WiSe20_21/1_W3-WM/app_data/test_folder'
-# dirtest_name = 'test_folder'
-
 dir1 = 'C:/Users/kevin/OneDrive/Studium/4_WiSe20_21/1_W3-WM/app_data/Plakatfotos'
 dir1_name = 'plakatfotos'
 
 dir2 = 'C:/Users/kevin/OneDrive/Studium/4_WiSe20_21/1_W3-WM/app_data/insta_posters'
 dir2_name = 'insta_posters'
 
-# handle_directory(dirtest, dirtest_name)
 handle_directory(dir1, dir1_name)
 handle_directory(dir2, dir2_name)
 
