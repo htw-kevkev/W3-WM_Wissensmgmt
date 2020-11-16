@@ -48,9 +48,8 @@ for file in listOfFiles:
 
 	# === OCR w/o preprocessing
 	z = pytesseract.image_to_string(image, lang='deu+eng', config=custom_oem_psm_config).replace(',','').replace(';','').replace('\n', ' ')
-	print('==: ' + z)
-	show_image(image, file + '\nbefore preprocessing')
-
+	print('== 0: ' + z)
+	# show_image(image, file + '\nbefore preprocessing')
 
 
 	# === Simple image preprocessing approach ===
@@ -60,12 +59,29 @@ for file in listOfFiles:
 	# we need to convert from BGR to RGB format/mode:
 	image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 	one = pytesseract.image_to_string(image, lang='deu+eng', config=custom_oem_psm_config).replace(',','').replace(';','').replace('\n', ' ')
-	print('==: ' + one)
-	show_image(image, file + '\none')
+	print('== 1: ' + one)
+	# show_image(image, file + '\nRGB')
 	# OR --- THIS IS SUPERLOW IN PERFORMANCE
 	# img_rgb2 = Image.frombytes('RGB', image.shape[:2], image, 'raw', 'BGR', 0, 0)
 	# two = pytesseract.image_to_string(img_rgb2, lang='deu+eng').replace(',','').replace(';','').replace('\n', ' ')
 
+	image = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
+	two = pytesseract.image_to_string(image, lang='deu+eng', config=custom_oem_psm_config).replace(',','').replace(';','').replace('\n', ' ')
+	print('== 2: ' + two)
+	# show_image(image, file + '\nGRAY')
+
+	image = cv2.medianBlur(image,5)
+	three = pytesseract.image_to_string(image, lang='deu+eng', config=custom_oem_psm_config).replace(',','').replace(';','').replace('\n', ' ')
+	print('== 3: ' + three)
+	# show_image(image, file + '\nBLUR')
+
+	image = cv2.threshold(image, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)[1]
+	four = pytesseract.image_to_string(image, lang='deu+eng', config=custom_oem_psm_config).replace(',','').replace(';','').replace('\n', ' ')
+	print('== 4: ' + four)
+	# show_image(image, file + '\nTHRESHOLD')
+
+
+	print('\n')
 
 	# # === Image preprocessing ===
 	# # https://nanonets.com/blog/ocr-with-tesseract/#preprocessingfortesseract
@@ -188,7 +204,6 @@ for file in listOfFiles:
 	# plt.imshow(image)
 	# plt.title(file)
 	# plt.show()
-	# print('\n')
 
 	# === OLD ===
 
