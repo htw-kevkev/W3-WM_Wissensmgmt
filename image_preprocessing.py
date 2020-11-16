@@ -21,16 +21,108 @@ import utils
 # 4. die Kommandozeile unten im Code ausfuehren
 pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
 
+# INTERESTING REFERENCES
+# https://ai-facets.org/tesseract-ocr-best-practices/
+# https://www.statworx.com/de/blog/finetuning-von-tesseract-ocr-fuer-deutsche-rechnungen/
+
+# Configuration for tesseract
+# https://pypi.org/project/pytesseract/ and https://ai-facets.org/tesseract-ocr-best-practices/
+custom_oem_psm_config = r'--oem 1 --psm 12'
+
+
+def show_image(image, title):
+	plt.imshow(image)
+	plt.title(title)
+	plt.show()
+
+
 dir_test = 'C:/Users/kevin/OneDrive/Studium/4_WiSe20_21/1_W3-WM/app_data/test_images'
 
 listOfFiles = os.listdir(dir_test)
 for file in listOfFiles:
-	print('===== Processing file ' + str(file) + ' =====')
+	print('== Processing file ' + str(file) + ' ==')
 
 	completePath = os.path.join(dir_test, file).replace('\\','/')
 	image = cv2.imread(completePath)
-	z = pytesseract.image_to_string(image, lang='deu+eng').replace(',','').replace(';','').replace('\n', ' ')
-	print('== Z: ' + z)
+
+
+	# === OCR w/o preprocessing
+	z = pytesseract.image_to_string(image, lang='deu+eng', config=custom_oem_psm_config).replace(',','').replace(';','').replace('\n', ' ')
+	print('==: ' + z)
+	show_image(image, file + '\nbefore preprocessing')
+
+
+
+	# === Simple image preprocessing approach ===
+	# https://pypi.org/project/pytesseract/
+
+	# By default OpenCV stores images in BGR format and since pytesseract assumes RGB format,
+	# we need to convert from BGR to RGB format/mode:
+	image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+	one = pytesseract.image_to_string(image, lang='deu+eng', config=custom_oem_psm_config).replace(',','').replace(';','').replace('\n', ' ')
+	print('==: ' + one)
+	show_image(image, file + '\none')
+	# OR --- THIS IS SUPERLOW IN PERFORMANCE
+	# img_rgb2 = Image.frombytes('RGB', image.shape[:2], image, 'raw', 'BGR', 0, 0)
+	# two = pytesseract.image_to_string(img_rgb2, lang='deu+eng').replace(',','').replace(';','').replace('\n', ' ')
+
+
+	# # === Image preprocessing ===
+	# # https://nanonets.com/blog/ocr-with-tesseract/#preprocessingfortesseract
+
+	# # get grayscale image
+	# image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
+
+	# # noise removal
+	# image = cv2.medianBlur(image,5)
+
+
+	# # thresholding
+	# image = cv2.threshold(image, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)[1]
+
+	# t = pytesseract.image_to_string(image, lang='deu+eng').replace(',','').replace(';','').replace('\n', ' ')
+	# print('== T: ' + t)
+	# show_image(image, file + '\nafter thresholding')
+
+
+	# # dilation (Streckung)
+	# kernel = np.ones((5,5),np.uint8)
+	# image = cv2.dilate(image, kernel, iterations = 1)
+
+
+ #    # erosion
+	# kernel = np.ones((5,5),np.uint8)
+	# image = cv2.erode(image, kernel, iterations = 1)
+
+
+ #    # opening - erosion followed by dilation
+	# kernel = np.ones((5,5),np.uint8)
+	# image = cv2.morphologyEx(image, cv2.MORPH_OPEN, kernel)
+
+
+ #    # canny edge detection
+	# image = cv2.Canny(image, 100, 200)
+
+
+ #    # skew correction
+	# coords = np.column_stack(np.where(image > 0))
+	# angle = cv2.minAreaRect(coords)[-1]
+	# if angle < -45:
+	# 	angle = -(90 + angle)
+	# else:
+	# 	angle = -angle
+	# (h, w) = image.shape[:2]
+	# center = (w // 2, h // 2)
+	# M = cv2.getRotationMatrix2D(center, angle, 1.0)
+	# image = cv2.warpAffine(image, M, (w, h), flags=cv2.INTER_CUBIC, borderMode=cv2.BORDER_REPLICATE)
+
+
+	# e = pytesseract.image_to_string(image, lang='deu+eng').replace(',','').replace(';','').replace('\n', ' ')
+	# print('== E: ' + e)
+	# show_image(image, file + '\nafter everything')
+
+
 
 	# === Image preprocessing ===
 	# https://www.freecodecamp.org/news/getting-started-with-tesseract-part-ii-f7f9a0899b3f/
@@ -42,29 +134,41 @@ for file in listOfFiles:
 	# print('== I: ' + i)
 
 	# image to grayscale
-	image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-	g = pytesseract.image_to_string(image, lang='deu+eng').replace(',','').replace(';','').replace('\n', ' ')
-	print('== G: ' + g)
+	# image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+	# g = pytesseract.image_to_string(image, lang='deu+eng').replace(',','').replace(';','').replace('\n', ' ')
+	# print('== G: ' + g)
+	# plt.imshow(image)
+	# plt.title(file + 'gray')
+	# plt.show()
+
 
 	# == A. Rescaling
 	# 1. shrinking image
 	# image = cv2.resize(image, None, fx=0.5, fy=0.5, interpolation=cv2.INTER_AREA)
 	# 2. enlarge image
-	image = cv2.resize(image, None, fx=2, fy=2, interpolation=cv2.INTER_CUBIC)
-	r = pytesseract.image_to_string(image, lang='deu+eng').replace(',','').replace(';','').replace('\n', ' ')
-	print('== R: ' + r)
+	# image = cv2.resize(image, None, fx=2, fy=2, interpolation=cv2.INTER_CUBIC)
+	# r = pytesseract.image_to_string(image, lang='deu+eng').replace(',','').replace(';','').replace('\n', ' ')
+	# print('== R: ' + r)
+	# plt.imshow(image)
+	# plt.title(file + 'rescaled')
+	# plt.show()
+
 
 	# === B. Blurring
 	# 1. Averaging
 	# image = cv.blur(image,(5,5))
 	# 2. 2. Gaussian blurring
-	image = cv2.GaussianBlur(image, (5, 5), 0)
+	# image = cv2.GaussianBlur(image, (5, 5), 0)
 	# 3. Median blurring
 	# image = cv2.medianBlur(image, 3)
 	# 4. Bilateral filtering
 	# image = cv2.bilateralFilter(image,9,75,75)
-	b = pytesseract.image_to_string(image, lang='deu+eng').replace(',','').replace(';','').replace('\n', ' ')
-	print('== B: ' + b)
+	# b = pytesseract.image_to_string(image, lang='deu+eng').replace(',','').replace(';','').replace('\n', ' ')
+	# print('== B: ' + b)
+	# plt.imshow(image)
+	# plt.title(file + 'blurred')
+	# plt.show()
+
 
 	# === C. Image Thresholding
 	# 1. Simple Threshold
@@ -72,15 +176,19 @@ for file in listOfFiles:
 	# 2. Adaptive Threshold
 	# image = cv2.adaptiveThreshold(image, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 31, 2)
 	# 3. Otsu’s Threshold
-	thr_value, image = cv2.threshold(image, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
-	t = pytesseract.image_to_string(image, lang='deu+eng').replace(',','').replace(';','').replace('\n', ' ')
-	print('== T: ' + t)
+	# thr_value, image = cv2.threshold(image, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
+	# t = pytesseract.image_to_string(image, lang='deu+eng').replace(',','').replace(';','').replace('\n', ' ')
+	# print('== T: ' + t)
+	# plt.imshow(image)
+	# plt.title(file + 'thresholded')
+	# plt.show()
+
 
 	# show preprocessed image (from https://stackoverflow.com/questions/2659312/how-do-i-convert-a-numpy-array-to-and-display-an-image)
 	# plt.imshow(image)
 	# plt.title(file)
 	# plt.show()
-	print('\n')
+	# print('\n')
 
 	# === OLD ===
 
