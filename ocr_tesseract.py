@@ -39,8 +39,8 @@ def handle_directory(directory, directory_name):
 		for file in listOfFiles:
 			image_counter = image_counter + 1
 			completePath = os.path.join(directory, file).replace('\\','/')
-			ocr_after_grayscaling, ocr_after_blurring = handle_image(completePath, file, total_images, image_counter)
-			row = [directory_name, file, ocr_after_grayscaling, ocr_after_blurring]
+			ocr_after_rgb, ocr_after_grayscaling, ocr_after_blurring = handle_image(completePath, file, total_images, image_counter)
+			row = [directory_name, file, ocr_after_rgb, ocr_after_grayscaling, ocr_after_blurring]
 			imageRows.append(row)
 	except:
 		log.error('There was a problem handling the directory ' + str(directory_name))
@@ -55,6 +55,7 @@ def handle_image(path, file, total_images, image_counter):
 		# By default OpenCV stores images in BGR format and since pytesseract assumes RGB format,
 		# we need to convert from BGR to RGB format/mode:
 		image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+		ocr_after_rgb = pytesseract.image_to_string(image, lang='deu+eng', config=custom_oem_psm_config).replace(',','').replace(';','').replace('\n', ' ')
 
 		# Grayscaling
 		image = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
@@ -63,7 +64,6 @@ def handle_image(path, file, total_images, image_counter):
 		# Blurring
 		image = cv2.medianBlur(image,5)
 		ocr_after_blurring = pytesseract.image_to_string(image, lang='deu+eng', config=custom_oem_psm_config).replace(',','').replace(';','').replace('\n', ' ')
-
 
 		# === OLD ===
 
@@ -111,31 +111,31 @@ def handle_image(path, file, total_images, image_counter):
 		# # plt.title(file)
 		# # plt.show()
 
-		return ocr_after_grayscaling, ocr_after_blurring
+		return ocr_after_rgb, ocr_after_grayscaling, ocr_after_blurring
 	except:
 		log.error('There was a problem handling the image ' + str(file))
-		return 'ERROR', 'ERROR'
+		return 'ERROR', 'ERROR', 'ERROR'
 
 
 log.info('Inizialize list for image data')
 imageRows = []
 
-# dirtest = 'C:/Users/kevin/OneDrive/Studium/4_WiSe20_21/1_W3-WM/app_data/test_images'
-# dirtest_name = 'test_images'
+dirtest = 'C:/Users/kevin/OneDrive/Studium/4_WiSe20_21/1_W3-WM/app_data/test_images'
+dirtest_name = 'test_images'
 
-dir1 = 'C:/Users/kevin/OneDrive/Studium/4_WiSe20_21/1_W3-WM/app_data/Plakatfotos'
-dir1_name = 'plakatfotos'
+# dir1 = 'C:/Users/kevin/OneDrive/Studium/4_WiSe20_21/1_W3-WM/app_data/Plakatfotos'
+# dir1_name = 'plakatfotos'
 
-dir2 = 'C:/Users/kevin/OneDrive/Studium/4_WiSe20_21/1_W3-WM/app_data/insta_posters'
-dir2_name = 'insta_posters'
+# dir2 = 'C:/Users/kevin/OneDrive/Studium/4_WiSe20_21/1_W3-WM/app_data/insta_posters'
+# dir2_name = 'insta_posters'
 
-# handle_directory(dirtest, dirtest_name)
-handle_directory(dir1, dir1_name)
-handle_directory(dir2, dir2_name)
+handle_directory(dirtest, dirtest_name)
+# handle_directory(dir1, dir1_name)
+# handle_directory(dir2, dir2_name)
 
 csvfilename = 'images_to_text.csv'
 log.info('Write list with image data to file ' + str(csvfilename))
-columns = ['DIRECTORY', 'FILE', 'ocr_after_grayscaling', 'ocr_after_blurring']
+columns = ['DIRECTORY', 'FILE', 'ocr_after_rgb', 'ocr_after_grayscaling', 'ocr_after_blurring']
 with open(csvfilename, 'w', encoding='utf-8', newline='') as csvfile:
 	csvwriter = csv.writer(csvfile)
 	csvwriter.writerow(columns)

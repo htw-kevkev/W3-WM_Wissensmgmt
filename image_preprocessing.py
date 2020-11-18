@@ -30,10 +30,45 @@ pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tessera
 custom_oem_psm_config = r'--oem 1 --psm 12'
 
 
-def show_image(image, title):
+def show_image(image):
 	plt.imshow(image)
-	plt.title(title)
+	# plt.title(file)
 	plt.show()
+
+def apply_laplacian(img):
+
+    # [variables]
+    # Declare the variables we are going to use
+    ddepth = cv2.CV_16S
+    kernel_size = 3
+    # [variables]
+    # [load]
+    src = img # Load an image
+    # Check if image is loaded fine
+    if src is None:
+        print ('Error opening image')
+        return -1
+    # [load]
+    # [reduce_noise]
+    # Remove noise by blurring with a Gaussian filter
+    src = cv2.GaussianBlur(src, (3, 3), 0)
+    # [reduce_noise]
+    # [convert_to_gray]
+    # Convert the image to grayscale
+    src_gray = cv2.cvtColor(src, cv2.COLOR_BGR2GRAY)
+    # [convert_to_gray]
+    # Create Window
+    # [laplacian]
+    # Apply Laplace function
+    dst = cv2.Laplacian(src_gray, ddepth, ksize=kernel_size)
+    # [laplacian]
+    # [convert]
+    # converting back to uint8
+    abs_dst = cv2.convertScaleAbs(dst)
+    # [convert]
+    # [display]
+
+    return abs_dst
 
 
 dir_test = 'C:/Users/kevin/OneDrive/Studium/4_WiSe20_21/1_W3-WM/app_data/test_images'
@@ -41,9 +76,20 @@ dir_test = 'C:/Users/kevin/OneDrive/Studium/4_WiSe20_21/1_W3-WM/app_data/test_im
 listOfFiles = os.listdir(dir_test)
 for file in listOfFiles:
 	print('== Processing file ' + str(file) + ' ==')
-
 	completePath = os.path.join(dir_test, file).replace('\\','/')
-	image = cv2.imread(completePath)
+	image = cv2.imread(completePath, cv2.IMREAD_COLOR)
+
+	# image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+
+	image = apply_laplacian(image)
+
+	text = pytesseract.image_to_string(image, lang='deu+eng', config=custom_oem_psm_config).replace(',','').replace(';','').replace('\n', ' ')
+	print(text)
+
+	show_image(image)
+
+	'''
+	print('== Processing file ' + str(file) + ' ==')
 
 
 	# === OCR w/o preprocessing
@@ -82,7 +128,9 @@ for file in listOfFiles:
 
 
 	print('\n')
+	'''
 
+	
 	# # === Image preprocessing ===
 	# # https://nanonets.com/blog/ocr-with-tesseract/#preprocessingfortesseract
 
