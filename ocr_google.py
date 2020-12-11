@@ -14,7 +14,7 @@ import cv2
 import matplotlib.pyplot as plt
 import csv
 import utils
-
+# LUCAS LUCASAAAAAAAAAAAAAAAA LUCAS
 # initialize logger
 log = utils.set_logging()
 
