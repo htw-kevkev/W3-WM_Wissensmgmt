@@ -20,6 +20,8 @@ import csv
 import utils
 import datetime
 import pandas as pd
+import time
+import datetime
 
 
 # Installation pytesseract ist etwas tricky
@@ -47,7 +49,7 @@ def handle_directory(directory, directory_name):
 		for file in listOfFiles:
 			image_counter = image_counter + 1
 			completePath = os.path.join(directory, file).replace('\\','/')
-			results_per_block, conf_of_image, blocks_of_image = handle_image(completePath, file, total_images, image_counter)
+			results_per_block, conf_of_image, blocks_of_image, runtime_ocr = handle_image(completePath, file, total_images, image_counter)
 
 			# handle information per block
 			try: # iterrows will not work if handle_image runs into exception
@@ -59,12 +61,13 @@ def handle_directory(directory, directory_name):
 				imageBlockRows.append(blockRow)
 
 			# handle information per image
-			imageRow = [directory_name, file, blocks_of_image, conf_of_image]
+			imageRow = [directory_name, file, blocks_of_image, conf_of_image, runtime_ocr]
 			imageRows.append(imageRow)
 
 			# log.info(handle_image(completePath, file, total_images, image_counter))
 	except Exception as e:
 		log.error('There was a problem handling the directory ' + str(directory_name) + ': ' + str(e))
+		log.error('')
 
 
 def handle_image(path, file, total_images, image_counter):
@@ -72,7 +75,12 @@ def handle_image(path, file, total_images, image_counter):
 	
 	try:
 		image = cv2.imread(path)
+
+		starttime_ocr = datetime.datetime.now()
 		data = pytesseract.image_to_data(image, lang='deu+eng', config=custom_oem_psm_config, output_type=Output.DATAFRAME)
+		endtime_ocr = datetime.datetime.now()
+		runtime_ocr = endtime_ocr - starttime_ocr
+		runtime_ocr = round(runtime_ocr.total_seconds(),0)
 
 		# remove all rows with no confidence value (-1)
 		data = data[data.conf != -1]
@@ -93,30 +101,32 @@ def handle_image(path, file, total_images, image_counter):
 
 		log.info('Number of blocks found: ' + str(blocks_of_image))
 		log.info('Avg conf value: ' + str(round(conf_of_image,1)))
+		log.info('Runtime: ' + str(runtime_ocr))
 		log.info('')
 
-		return results_per_block, conf_of_image, blocks_of_image
+		return results_per_block, conf_of_image, blocks_of_image, runtime_ocr
 	except Exception as e:
 		log.error('There was a problem handling the image ' + str(file) + ': ' + str(e))
-		return 'ERROR', 'ERROR', 'ERROR'
+		log.error('')
+		return 'ERROR', 'ERROR', 'ERROR', 'ERROR'
 
 
 log.info('Inizialize lists for image data')
 imageBlockRows = []
 imageRows = []
 
-# dirtest = 'C:/Users/kevin/OneDrive/Studium/4_WiSe20_21/1_W3-WM/app_data/test_images'
-# dirtest_name = 'test_images'
+dirtest = 'C:/Users/kevin/OneDrive/Studium/4_WiSe20_21/1_W3-WM/app_data/test_images'
+dirtest_name = 'test_images'
 
-dir1 = 'C:/Users/kevin/OneDrive/Studium/4_WiSe20_21/1_W3-WM/app_data/Plakatfotos'
-dir1_name = 'plakatfotos'
+# dir1 = 'C:/Users/kevin/OneDrive/Studium/4_WiSe20_21/1_W3-WM/app_data/Plakatfotos'
+# dir1_name = 'plakatfotos'
 
-dir2 = 'C:/Users/kevin/OneDrive/Studium/4_WiSe20_21/1_W3-WM/app_data/insta_posters'
-dir2_name = 'insta_posters'
+# dir2 = 'C:/Users/kevin/OneDrive/Studium/4_WiSe20_21/1_W3-WM/app_data/insta_posters'
+# dir2_name = 'insta_posters'
 
-# handle_directory(dirtest, dirtest_name)
-handle_directory(dir2, dir2_name)
-handle_directory(dir1, dir1_name)
+handle_directory(dirtest, dirtest_name)
+# handle_directory(dir2, dir2_name)
+# handle_directory(dir1, dir1_name)
 
 file_dir = os.path.dirname(os.path.abspath(__file__))
 metrics_folder = 'metrics'
@@ -138,7 +148,7 @@ with open(csv_path, 'w', encoding='utf-8', newline='') as csvfile:
 csvfilename = str(timestamp) + '_metrics_per_image' + '.csv'
 csv_path = os.path.join(metrics_path, csvfilename)
 log.info('Write list with image data to file ' + str(csvfilename))
-columns = ['DIRECTORY', 'FILE', 'BLOCKS', 'CONF']
+columns = ['DIRECTORY', 'FILE', 'BLOCKS', 'CONF', 'RUNTIME']
 with open(csv_path, 'w', encoding='utf-8', newline='') as csvfile:
 	csvwriter = csv.writer(csvfile)
 	csvwriter.writerow(columns)
