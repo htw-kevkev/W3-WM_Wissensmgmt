@@ -4,20 +4,8 @@ Created on Wed Dec 30 17:35:00 2020
 
 @author: kevin
 
-width = 2592
-height = 1944
-
-x_min = 599 # left 
-x_max = 1046 # right
-y_min = 476
-y_max = 674
-
-left = x_min
-bottom = height - y_max # (= 1270)
-right = x_max
-top = height - y_min # (= 1468)
-page = 0
-
+This file is to convert the NEOCR dataset (with jpg and xml files) to Tesseract friendly format (tif and box files)
+Makes it usable for training
 """
 import utils
 import os
@@ -85,11 +73,3 @@ for file in listOfFiles:
 			box_file.close()
 	except Exception as e:
 		log.error('There was a problem handling the image ' + str(file) + ': ' + str(e))
-			
-
-
-
-
-
-
-

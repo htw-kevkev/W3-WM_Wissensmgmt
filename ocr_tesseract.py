@@ -3,6 +3,8 @@
 Created on Mon Oct 26 13:49:26 2020
 
 @author: kevin
+
+This file uses Tesseract-OCR to detect text in images and writes the text per image to csv
 """
 import pytesseract
 import cv2
@@ -12,6 +14,7 @@ import numpy as np
 import os
 import csv
 import utils
+import image_preprocessing
 
 
 # Installation pytesseract ist etwas tricky
@@ -51,65 +54,14 @@ def handle_image(path, file, total_images, image_counter):
 	
 	try:
 		image = cv2.imread(path)
-
-		# By default OpenCV stores images in BGR format and since pytesseract assumes RGB format,
-		# we need to convert from BGR to RGB format/mode:
-		image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+		image = image_preprocessing.bgr_to_rgb(image)
 		ocr_after_rgb = pytesseract.image_to_string(image, lang='deu+eng', config=custom_oem_psm_config).replace(',','').replace(';','').replace('\n', ' ')
 
-		# Grayscaling
-		image = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
+		image = image_preprocessing.grayscaling(image)
 		ocr_after_grayscaling = pytesseract.image_to_string(image, lang='deu+eng', config=custom_oem_psm_config).replace(',','').replace(';','').replace('\n', ' ')
 
-		# Blurring
-		image = cv2.medianBlur(image,5)
+		image = image_preprocessing.blurring(image)
 		ocr_after_blurring = pytesseract.image_to_string(image, lang='deu+eng', config=custom_oem_psm_config).replace(',','').replace(';','').replace('\n', ' ')
-
-		# === OLD ===
-
-		# # === Image preprocessing ===
-		# # https://www.freecodecamp.org/news/getting-started-with-tesseract-part-ii-f7f9a0899b3f/
-		# # https://docs.opencv.org/master/d7/d4d/tutorial_py_thresholding.html
-
-		# # invert image
-		# # image = cv2.bitwise_not(image)
-		# # ocr_after_inverting = pytesseract.image_to_string(image, lang='deu+eng').replace(',','').replace(';','').replace('\n', ' ')
-
-		# # image to grayscale
-		# image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-		# ocr_after_grayscaling = pytesseract.image_to_string(image, lang='deu+eng').replace(',','').replace(';','').replace('\n', ' ')
-
-		# # == A. Rescaling
-		# # 1. shrinking image
-		# image = cv2.resize(image, None, fx=0.5, fy=0.5, interpolation=cv2.INTER_AREA)
-		# # 2. enlarge image
-		# # image = cv2.resize(image, None, fx=2, fy=2, interpolation=cv2.INTER_CUBIC)
-		# ocr_after_rescaling = pytesseract.image_to_string(image, lang='deu+eng').replace(',','').replace(';','').replace('\n', ' ')
-
-		# # === B. Blurring
-		# # 1. Averaging
-		# # image = cv.blur(image,(5,5))
-		# # 2. 2. Gaussian blurring
-		# image = cv2.GaussianBlur(image, (5, 5), 0)
-		# # 3. Median blurring
-		# # image = cv2.medianBlur(image, 3)
-		# # 4. Bilateral filtering
-		# # image = cv2.bilateralFilter(image,9,75,75)
-		# ocr_after_blurring = pytesseract.image_to_string(image, lang='deu+eng').replace(',','').replace(';','').replace('\n', ' ')
-
-		# # === C. Image Thresholding
-		# # 1. Simple Threshold
-		# # thr_value, image = cv2.threshold(image,127,255,cv.THRESH_BINARY)
-		# # 2. Adaptive Threshold
-		# # image = cv2.adaptiveThreshold(image, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 31, 2)
-		# # 3. Otsu’s Threshold
-		# thr_value, image = cv2.threshold(image, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
-		# ocr_after_thresholding = pytesseract.image_to_string(image, lang='deu+eng').replace(',','').replace(';','').replace('\n', ' ')
-
-		# # # show preprocessed image (from https://stackoverflow.com/questions/2659312/how-do-i-convert-a-numpy-array-to-and-display-an-image)
-		# # plt.imshow(image)
-		# # plt.title(file)
-		# # plt.show()
 
 		return ocr_after_rgb, ocr_after_grayscaling, ocr_after_blurring
 	except:

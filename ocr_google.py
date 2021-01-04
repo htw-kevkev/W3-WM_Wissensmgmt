@@ -1,11 +1,15 @@
-
-# !!! INTERESSANT: https://www.tarent.de/blog/tesseract-opencvs-east-oder-doch-lieber-google-vision-api
-
 # -*- coding: utf-8 -*-
 """
 Created on Fri Nov 20 17:26:00 2020
 
 @author: kevin
+
+This file uses Google Vision API to detect text in images and writes the text per image to csv
+
+INTERESSANT: https://www.tarent.de/blog/tesseract-opencvs-east-oder-doch-lieber-google-vision-api
+
+REFERENCE
+https://cloud.google.com/vision/docs/ocr#vision_text_detection-python
 """
 from google.cloud import vision
 import io
@@ -14,8 +18,7 @@ import cv2
 import matplotlib.pyplot as plt
 import csv
 import utils
-# LUCAS LUCASAAAAAAAAAAAAAAAA LUCAS
-#LUUUUUUUUUCAAAAAAAAAAAAS
+
 # initialize logger
 log = utils.set_logging()
 
@@ -39,7 +42,6 @@ def handle_directory(directory, directory_name):
         log.error('There was a problem handling the directory ' + str(directory_name))
 
 
-# from https://cloud.google.com/vision/docs/ocr#vision_text_detection-python
 def detect_text(path, file, total_images, image_counter):
     log.info('Start handling image ' + str(image_counter) + ' of ' + str(total_images) + ': ' + str(file))
 
