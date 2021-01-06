@@ -4,6 +4,8 @@ Created on Mon Dec 28 14:10:00 2020
 
 @author: kevin
 
+!!! MAJOR ERROR: our custom trained language cannot be used in tesseract as it results in an error
+
 This script uses tesseract's conf value during ocr processing and writes the metrics to the dedicated directory
 Tesseract returns a conf value for every string it finds in every block
 Three files are saved: one shows the avg conf value per block (tesseract finds multiple blocks of text in every image)
@@ -35,8 +37,10 @@ pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tessera
 # initialize logger
 log = utils.set_logging()
 
+starttime = '{:%Y-%m-%d-%H%M%S}'.format(datetime.datetime.now())
+
 # function to apply ocr on images
-def handle_image(path, file, custom_oem_psm_config, rgb, gray, blur, thres, resc, inv):
+def handle_image(path, file, custom_oem_psm_config, rgb, gray, blur, thres, resc, inv, l):
 	try:
 		image = cv2.imread(path)
 		starttime_ocr = datetime.datetime.now()
@@ -55,7 +59,7 @@ def handle_image(path, file, custom_oem_psm_config, rgb, gray, blur, thres, resc
 		if inv:
 			image = image_preprocessing.inverting(image)
 
-		data = pytesseract.image_to_data(image, lang='deu+eng', config=custom_oem_psm_config, output_type=Output.DATAFRAME)
+		data = pytesseract.image_to_data(image, lang=l, config=custom_oem_psm_config, output_type=Output.DATAFRAME)
 		endtime_ocr = datetime.datetime.now()
 		runtime_ocr = endtime_ocr - starttime_ocr
 		runtime_ocr = round(runtime_ocr.total_seconds(),0)
@@ -98,10 +102,6 @@ def handle_image(path, file, custom_oem_psm_config, rgb, gray, blur, thres, resc
 		return False, None, None, None, None, None, None
 
 
-# === MAIN ===
-
-starttime = '{:%Y-%m-%d-%H%M%S}'.format(datetime.datetime.now())
-
 log.info('Inizialize lists for image data')
 imageBlockRows = [] # list to save data on text block level
 imageRows = [] # list to save data on image level (aggregated over blocks in image)
@@ -113,92 +113,75 @@ directory_name = 'test_images'
 listOfFiles = os.listdir(directory)
 total_images = len(listOfFiles)
 
-# Configuration for tesseract
-# https://pypi.org/project/pytesseract/ and https://ai-facets.org/tesseract-ocr-best-practices/
-# type 'tesseract --help-oem' or 'tesseract --help-psm' in command prompt to get possible values
-
-# initializing potential oem (OCR Engine modes) values
-# oem = 3 is default (based on what is available)
-# ==> Realization after testing:
-#		only oem=1 makes sense as it is the lstm only mode
-#		our fast tessdata is not compatible with legacy and it will not be supported in the future anyway
+# initializing config which was identified best with script 'ocr_tesseract_metrics_config'
 oem = 1
+psm = 3
+bgr_to_rgb = True
+grayscaling = False
+blurring = True
+thresholding = False
+rescaling = False
+inverting = False
 
-# initializing potential psm (Page segmentation modes) values
-# psm = 3 is default
-# skipped modes 4 - 10 are not suitable for our use case and modes 0 and 2 as they raise an error
-psm = [1,3,11,12,13]
+# initializing languages for comparison
+# earlier analysis showed that fast tessdata works best on our images
+# that is why we used fast traineddata file with lang=deu as base for our training which resulted in lang=cust
+langs = ['num+deu+eng','deu+eng']
 
-# initializing variables for image preprocessing steps - using lists to iterate over and eventually use every combination possible
-bgr_to_rgb = [False,True]
-grayscaling = [False,True]
-blurring = [False,True]
-thresholding = [False,True]
-rescaling = [False,True]
-inverting = [False,True]
+for l in langs:
+	custom_oem_psm_config = r'--oem {} --psm {}'.format(oem,psm)
+	full_config = ' --lang {}'.format(l)
+	log.info('===' + full_config)
 
+	# initializing variables for avg conf value on config level and image counter for nice logs
+	total_data = 0
+	total_conf = 0
+	total_blocks = 0
+	total_runtime = 0
+	image_counter_for_log = 0
+	success_images = 0
+	for file in listOfFiles:
+		image_counter_for_log = image_counter_for_log + 1
+		completePath = os.path.join(directory, file).replace('\\','/')
 
-for p in psm:
-	for inv in inverting:
-		for resc in rescaling:
-			for thres in thresholding:
-				for blur in blurring:
-					for gray in grayscaling:
-						for rgb in bgr_to_rgb:
-							custom_oem_psm_config = r'--oem {} --psm {}'.format(oem,p)
-							# custom_oem_psm_config = r'--oem 1 --psm 12'
-							full_config = '--oem {} --psm {}'.format(oem,p) + ' --rgb {}'.format(rgb) + ' --gray {}'.format(gray) + ' --blur {}'.format(blur) + ' --thres {}'.format(thres) + ' --resc {}'.format(resc) + ' --inv {}'.format(inv)
-							log.info('=== Config ' + full_config)
+		log.info('Start handling image ' + str(image_counter_for_log) + ' of ' + str(total_images) + ': ' + str(file))
+		image_status, results_per_block, conf_of_image, blocks_of_image, runtime_ocr, no_of_data, sum_of_conf = handle_image(completePath, file, custom_oem_psm_config, bgr_to_rgb, grayscaling, blurring, thresholding, rescaling, inverting, l)
 
-							# initializing variables for avg conf value on config level and image counter for nice logs
-							total_data = 0
-							total_conf = 0
-							total_blocks = 0
-							total_runtime = 0
-							image_counter_for_log = 0
-							success_images = 0
-							for file in listOfFiles:
-								image_counter_for_log = image_counter_for_log + 1
-								completePath = os.path.join(directory, file).replace('\\','/')
+		# handle information per block
+		try: # iterrows will not work if handle_image runs into exception
+			for index, row in results_per_block.iterrows():
+				blockRow = [l, directory_name, file, round(row[0],1), row[1]]
+				imageBlockRows.append(blockRow)
+		except:
+			blockRow = [l, directory_name, file, None, None]
+			imageBlockRows.append(blockRow)
 
-								log.info('Start handling image ' + str(image_counter_for_log) + ' of ' + str(total_images) + ': ' + str(file))
-								image_status, results_per_block, conf_of_image, blocks_of_image, runtime_ocr, no_of_data, sum_of_conf = handle_image(completePath, file, custom_oem_psm_config, rgb, gray, blur, thres, resc, inv)
+		# handle information per image
+		imageRow = [l, directory_name, file, blocks_of_image, conf_of_image, runtime_ocr]
+		imageRows.append(imageRow)
 
-								# handle information per block
-								try: # iterrows will not work if handle_image runs into exception
-									for index, row in results_per_block.iterrows():
-										blockRow = [oem, p, rgb, gray, blur, thres, resc, inv, directory_name, file, round(row[0],1), row[1]]
-										imageBlockRows.append(blockRow)
-								except:
-									blockRow = [oem, p, rgb, gray, blur, thres, resc, inv, directory_name, file, None, None]
-									imageBlockRows.append(blockRow)
+		# add additional data lines and conf values in total variables to avg later on config level
+		if image_status:
+			total_data += no_of_data
+			total_blocks += blocks_of_image
+			total_conf += sum_of_conf
+			total_runtime += runtime_ocr
+			success_images += 1
 
-								# handle information per image
-								imageRow = [oem, p, rgb, gray, blur, thres, resc, inv, directory_name, file, blocks_of_image, conf_of_image, runtime_ocr]
-								imageRows.append(imageRow)
+	if success_images > 0:
+		avg_conf = round(total_conf/total_data,1)
+		avg_runtime = round(total_runtime/success_images,1)
+		configRow = [l, success_images, total_blocks, avg_conf, avg_runtime]
+		configRows.append(configRow)
+	else:
+		avg_conf = None
+		avg_runtime = None
+		configRow = [l, None, None, None, None]
+		configRows.append(configRow)
 
-								# add additional data lines and conf values in total variables to avg later on config level
-								if image_status:
-									total_data += no_of_data
-									total_blocks += blocks_of_image
-									total_conf += sum_of_conf
-									total_runtime += runtime_ocr
-									success_images += 1
-
-							if success_images > 0:
-								avg_conf = round(total_conf/total_data,1)
-								avg_runtime = round(total_runtime/success_images,1)
-								configRow = [oem, p, rgb, gray, blur, thres, resc, inv, success_images, total_blocks, avg_conf, avg_runtime]
-								configRows.append(configRow)
-							else:
-								avg_conf = None
-								avg_runtime = None
-								configRow = [oem, p, rgb, gray, blur, thres, resc, inv, None, None, None, None]
-								configRows.append(configRow)
-
-							log.info('=== End of Config ' + full_config)
-							log.info('=== Images ' + str(success_images) + ' / Blocks ' + str(total_blocks) + ' / Avg_Conf ' + str(avg_conf) + ' / Avg_Runtime ' + str(avg_runtime))
-							log.info('')
+	log.info('=== End of' + full_config)
+	log.info('=== Images ' + str(success_images) + ' / Blocks ' + str(total_blocks) + ' / Avg_Conf ' + str(avg_conf) + ' / Avg_Runtime ' + str(avg_runtime))
+	log.info('')
 
 
 file_dir = os.path.dirname(os.path.abspath(__file__))
@@ -212,7 +195,7 @@ if not os.path.exists(metrics_path):
 csvfilename = 'metrics_per_block' + '.csv'
 csv_path = os.path.join(metrics_path, csvfilename)
 log.info('Write list with block data to file ' + str(csvfilename))
-columns = ['OEM', 'PSM', 'RGB', 'GRAY', 'BLUR', 'THRES', 'RESC', 'INV', 'DIRECTORY', 'FILE', 'CONF', 'TEXT']
+columns = ['LANG', 'DIRECTORY', 'FILE', 'CONF', 'TEXT']
 with open(csv_path, 'w', encoding='utf-8', newline='') as csvfile:
 	csvwriter = csv.writer(csvfile)
 	csvwriter.writerow(columns)
@@ -223,7 +206,7 @@ with open(csv_path, 'w', encoding='utf-8', newline='') as csvfile:
 csvfilename = 'metrics_per_image' + '.csv'
 csv_path = os.path.join(metrics_path, csvfilename)
 log.info('Write list with image data to file ' + str(csvfilename))
-columns = ['OEM', 'PSM', 'RGB', 'GRAY', 'BLUR', 'THRES', 'RESC', 'INV', 'DIRECTORY', 'FILE', 'BLOCKS', 'CONF', 'RUNTIME']
+columns = ['LANG', 'DIRECTORY', 'FILE', 'BLOCKS', 'CONF', 'RUNTIME']
 with open(csv_path, 'w', encoding='utf-8', newline='') as csvfile:
 	csvwriter = csv.writer(csvfile)
 	csvwriter.writerow(columns)
@@ -234,11 +217,12 @@ with open(csv_path, 'w', encoding='utf-8', newline='') as csvfile:
 csvfilename = 'metrics_per_config' + '.csv'
 csv_path = os.path.join(metrics_path, csvfilename)
 log.info('Write list with config data to file ' + str(csvfilename))
-columns = ['OEM', 'PSM', 'RGB', 'GRAY', 'BLUR', 'THRES', 'RESC', 'INV', 'IMAGES', 'BLOCKS', 'CONF', 'RUNTIME']
+columns = ['LANG', 'IMAGES', 'BLOCKS', 'CONF', 'RUNTIME']
 with open(csv_path, 'w', encoding='utf-8', newline='') as csvfile:
 	csvwriter = csv.writer(csvfile)
 	csvwriter.writerow(columns)
 	csvwriter.writerows(configRows)
+
 
 endtime = '{:%Y-%m-%d-%H%M%S}'.format(datetime.datetime.now())
 log.info('All done / ' + 'started ' + str(starttime) + ' / finished ' + str(endtime))

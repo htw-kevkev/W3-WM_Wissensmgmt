@@ -1,0 +1,321 @@
+KEY;OEM;PSM;RGB;GRAY;BLUR;THRES;RESC;INV;IMAGES;BLOCKS;CONF;RUNTIME;COMMENT
+13TrueFalseTrueFalseFalseFalse;1;3;True;False;True;False;False;False;10;76;63.3;13.5;BEST CONF OVERALL but less blocks than REFERENCE
+11TrueFalseTrueFalseFalseFalse;1;1;True;False;True;False;False;False;10;76;63.3;13.8;
+13TrueFalseTrueFalseFalseTrue;1;3;True;False;True;False;False;True;10;76;62.9;13.6;
+11TrueFalseTrueFalseFalseTrue;1;1;True;False;True;False;False;True;10;76;62.9;13.8;
+13FalseFalseTrueFalseFalseTrue;1;3;False;False;True;False;False;True;10;76;62.8;13.5;
+11FalseFalseTrueFalseFalseTrue;1;1;False;False;True;False;False;True;10;76;62.8;13.8;
+13FalseFalseTrueFalseFalseFalse;1;3;False;False;True;False;False;False;10;76;62.2;13.4;
+11FalseFalseTrueFalseFalseFalse;1;1;False;False;True;False;False;False;10;76;62.2;13.8;
+13TrueTrueFalseFalseFalseFalse;1;3;True;True;False;False;False;False;10;72;61.9;7;
+11TrueTrueFalseFalseFalseFalse;1;1;True;True;False;False;False;False;10;72;61.9;7.6;
+13TrueTrueFalseFalseFalseTrue;1;3;True;True;False;False;False;True;10;72;60.5;7;
+11TrueTrueFalseFalseFalseTrue;1;1;True;True;False;False;False;True;10;72;60.5;7.8;
+13TrueTrueFalseTrueFalseTrue;1;3;True;True;False;True;False;True;10;72;60.3;2.7;
+11TrueTrueFalseTrueFalseTrue;1;1;True;True;False;True;False;True;10;72;60.3;3.2;
+13TrueTrueFalseTrueFalseFalse;1;3;True;True;False;True;False;False;10;72;59.3;2.6;
+11TrueTrueFalseTrueFalseFalse;1;1;True;True;False;True;False;False;10;72;59.3;3.2;
+13TrueFalseFalseFalseFalseTrue;1;3;True;False;False;False;False;True;10;93;58.9;11.6;BEST CONF with equal blocks as REFERENCE
+11TrueFalseFalseFalseFalseTrue;1;1;True;False;False;False;False;True;10;93;58.9;12;
+13TrueFalseFalseFalseFalseFalse;1;3;True;False;False;False;False;False;10;93;58.8;11.4;
+11TrueFalseFalseFalseFalseFalse;1;1;True;False;False;False;False;False;10;93;58.8;11.9;
+13FalseFalseFalseFalseFalseTrue;1;3;False;False;False;False;False;True;10;93;58.6;11.6;
+11FalseFalseFalseFalseFalseTrue;1;1;False;False;False;False;False;True;10;93;58.6;12.1;
+13FalseTrueTrueTrueFalseTrue;1;3;False;True;True;True;False;True;10;85;58.4;2.5;
+11FalseTrueTrueTrueFalseTrue;1;1;False;True;True;True;False;True;10;85;58.4;2.9;
+13FalseFalseFalseFalseFalseFalse;1;3;False;False;False;False;False;False;10;93;58.2;11.4;REFERENCE (best config without img preprocessing)'
+11FalseFalseFalseFalseFalseFalse;1;1;False;False;False;False;False;False;10;93;58.2;12.1;
+13FalseTrueTrueFalseFalseTrue;1;3;False;True;True;False;False;True;10;86;57.9;7;
+13FalseTrueTrueFalseFalseFalse;1;3;False;True;True;False;False;False;10;86;57.9;7.1;
+11FalseTrueTrueFalseFalseFalse;1;1;False;True;True;False;False;False;10;86;57.9;7.2;
+11FalseTrueTrueFalseFalseTrue;1;1;False;True;True;False;False;True;10;86;57.9;7.3;
+11FalseTrueTrueFalseTrueFalse;1;1;False;True;True;False;True;False;10;108;57.7;18.4;
+11FalseTrueTrueFalseTrueTrue;1;1;False;True;True;False;True;True;10;108;57.4;18.4;
+13FalseTrueTrueTrueFalseFalse;1;3;False;True;True;True;False;False;10;86;56.9;2.6;
+11FalseTrueTrueTrueFalseFalse;1;1;False;True;True;True;False;False;10;86;56.9;2.9;
+13FalseTrueTrueFalseTrueFalse;1;3;False;True;True;False;True;False;10;110;56.9;18.1;
+113TrueTrueTrueFalseFalseTrue;1;13;True;True;True;False;False;True;10;10;56.6;13.4;
+13FalseTrueTrueFalseTrueTrue;1;3;False;True;True;False;True;True;10;110;56.3;18.2;
+113TrueTrueTrueTrueFalseTrue;1;13;True;True;True;True;False;True;10;10;56.2;2.1;
+113TrueFalseTrueFalseFalseTrue;1;13;True;False;True;False;False;True;10;10;55.7;29.6;
+113TrueTrueTrueFalseFalseFalse;1;13;True;True;True;False;False;False;10;10;55.5;13.5;
+11FalseTrueFalseFalseTrueFalse;1;1;False;True;False;False;True;False;10;172;55.4;32.3;
+13TrueTrueTrueFalseTrueFalse;1;3;True;True;True;False;True;False;10;115;54.5;17.9;
+11TrueTrueTrueFalseTrueFalse;1;1;True;True;True;False;True;False;10;115;54.5;18.4;
+113TrueFalseTrueFalseFalseFalse;1;13;True;False;True;False;False;False;10;10;54.5;29.6;
+13TrueTrueTrueFalseTrueTrue;1;3;True;True;True;False;True;True;10;115;54.4;17.9;
+11TrueTrueTrueFalseTrueTrue;1;1;True;True;True;False;True;True;10;115;54.4;18.5;
+113TrueFalseFalseFalseFalseTrue;1;13;True;False;False;False;False;True;10;10;54.2;25.9;
+11FalseTrueFalseFalseTrueTrue;1;1;False;True;False;False;True;True;10;172;54.2;31.9;
+113TrueFalseFalseFalseFalseFalse;1;13;True;False;False;False;False;False;10;10;54.1;25.9;
+13FalseTrueFalseFalseTrueFalse;1;3;False;True;False;False;True;False;10;160;54;31.4;
+13TrueTrueFalseFalseTrueFalse;1;3;True;True;False;False;True;False;10;127;53.9;28.6;
+11TrueTrueFalseFalseTrueFalse;1;1;True;True;False;False;True;False;10;127;53.9;29;
+11FalseTrueFalseTrueTrueTrue;1;1;False;True;False;True;True;True;10;132;53.8;13.4;
+13FalseTrueFalseTrueTrueTrue;1;3;False;True;False;True;True;True;10;141;53.7;10.7;
+11FalseTrueFalseTrueTrueFalse;1;1;False;True;False;True;True;False;10;132;53.4;13.7;
+13TrueTrueFalseFalseTrueTrue;1;3;True;True;False;False;True;True;10;127;53.3;28.7;
+11TrueTrueFalseFalseTrueTrue;1;1;True;True;False;False;True;True;10;127;53.3;29.3;
+13FalseTrueFalseTrueTrueFalse;1;3;False;True;False;True;True;False;10;141;53.2;10.6;
+11TrueTrueTrueTrueTrueTrue;1;1;True;True;True;True;True;True;10;109;53.1;7;
+13FalseTrueTrueTrueTrueTrue;1;3;False;True;True;True;True;True;10;105;53;6.9;
+13TrueTrueTrueTrueFalseFalse;1;3;True;True;True;True;False;False;10;87;52.9;2.6;
+11TrueTrueTrueTrueFalseFalse;1;1;True;True;True;True;False;False;10;87;52.9;3.1;
+11TrueTrueTrueTrueTrueFalse;1;1;True;True;True;True;True;False;10;109;52.8;7;
+13FalseTrueFalseFalseTrueTrue;1;3;False;True;False;False;True;True;10;160;52.8;31.8;
+11FalseTrueTrueTrueTrueTrue;1;1;False;True;True;True;True;True;10;109;52.7;7.5;
+13FalseFalseTrueFalseTrueFalse;1;3;False;False;True;False;True;False;10;106;52.7;37.8;
+11FalseFalseTrueFalseTrueFalse;1;1;False;False;True;False;True;False;10;106;52.7;38.1;
+13FalseTrueFalseTrueFalseFalse;1;3;False;True;False;True;False;False;10;99;52.6;2.9;
+11FalseTrueFalseTrueFalseFalse;1;1;False;True;False;True;False;False;10;99;52.6;3.7;
+13TrueTrueTrueTrueTrueTrue;1;3;True;True;True;True;True;True;10;98;52.6;6.6;
+13FalseTrueTrueTrueTrueFalse;1;3;False;True;True;True;True;False;10;105;52.6;6.8;
+13FalseTrueFalseTrueFalseTrue;1;3;False;True;False;True;False;True;10;99;52.5;3;
+11FalseTrueFalseTrueFalseTrue;1;1;False;True;False;True;False;True;10;99;52.5;3.5;
+13TrueTrueTrueTrueFalseTrue;1;3;True;True;True;True;False;True;10;87;52.4;2.6;
+11TrueTrueTrueTrueFalseTrue;1;1;True;True;True;True;False;True;10;87;52.4;3.1;
+13TrueTrueTrueTrueTrueFalse;1;3;True;True;True;True;True;False;10;98;52.4;6.4;
+113TrueTrueFalseFalseFalseTrue;1;13;True;True;False;False;False;True;10;10;52.4;14.2;
+11FalseTrueTrueTrueTrueFalse;1;1;False;True;True;True;True;False;10;109;52.3;7.6;
+13TrueTrueTrueFalseFalseTrue;1;3;True;True;True;False;False;True;10;87;52.2;6.8;
+11TrueTrueTrueFalseFalseTrue;1;1;True;True;True;False;False;True;10;87;52.2;7.5;
+13TrueTrueFalseTrueTrueFalse;1;3;True;True;False;True;True;False;10;93;52.2;8.6;
+11TrueTrueFalseTrueTrueFalse;1;1;True;True;False;True;True;False;10;93;52.2;9.1;
+13TrueTrueTrueFalseFalseFalse;1;3;True;True;True;False;False;False;10;85;52;6.8;
+11TrueTrueTrueFalseFalseFalse;1;1;True;True;True;False;False;False;10;85;52;7.3;
+13FalseTrueFalseFalseFalseFalse;1;3;False;True;False;False;False;False;10;99;51.8;7.2;
+11FalseTrueFalseFalseFalseFalse;1;1;False;True;False;False;False;False;10;99;51.8;8.4;
+13TrueFalseTrueFalseTrueFalse;1;3;True;False;True;False;True;False;10;106;51.8;37.8;
+13TrueFalseTrueFalseTrueTrue;1;3;True;False;True;False;True;True;10;106;51.8;37.8;
+11TrueFalseTrueFalseTrueFalse;1;1;True;False;True;False;True;False;10;106;51.8;38.2;
+11TrueFalseTrueFalseTrueTrue;1;1;True;False;True;False;True;True;10;106;51.8;38.5;
+13FalseTrueFalseFalseFalseTrue;1;3;False;True;False;False;False;True;10;99;51.6;7.4;
+11FalseTrueFalseFalseFalseTrue;1;1;False;True;False;False;False;True;10;99;51.6;8.1;
+13FalseFalseTrueFalseTrueTrue;1;3;False;False;True;False;True;True;10;106;51.4;37.8;
+11FalseFalseTrueFalseTrueTrue;1;1;False;False;True;False;True;True;10;106;51.4;38.4;
+113FalseTrueFalseTrueTrueTrue;1;13;False;True;False;True;True;True;10;9;51.3;8.2;
+13TrueTrueFalseTrueTrueTrue;1;3;True;True;False;True;True;True;10;93;51.3;8.7;
+11TrueTrueFalseTrueTrueTrue;1;1;True;True;False;True;True;True;10;93;51.3;9;
+113TrueTrueFalseFalseFalseFalse;1;13;True;True;False;False;False;False;10;10;50.6;14.2;
+113FalseFalseTrueFalseFalseFalse;1;13;False;False;True;False;False;False;10;10;50.6;29.6;
+113FalseFalseTrueFalseFalseTrue;1;13;False;False;True;False;False;True;10;10;50.5;29.6;
+113FalseFalseFalseFalseFalseFalse;1;13;False;False;False;False;False;False;10;10;49.9;25.9;
+13FalseFalseFalseFalseTrueFalse;1;3;False;False;False;False;True;False;10;166;49.3;49.4;
+11FalseFalseFalseFalseTrueFalse;1;1;False;False;False;False;True;False;10;166;49.3;49.8;
+13TrueFalseFalseFalseTrueFalse;1;3;True;False;False;False;True;False;10;166;48.9;49.2;
+11TrueFalseFalseFalseTrueFalse;1;1;True;False;False;False;True;False;10;166;48.9;50.1;
+113FalseTrueTrueTrueFalseFalse;1;13;False;True;True;True;False;False;10;10;48.5;2;
+113FalseFalseFalseFalseFalseTrue;1;13;False;False;False;False;False;True;10;10;48.1;26.5;
+13TrueFalseFalseFalseTrueTrue;1;3;True;False;False;False;True;True;10;165;48;49.3;
+11TrueFalseFalseFalseTrueTrue;1;1;True;False;False;False;True;True;10;165;48;49.7;
+113TrueTrueFalseFalseTrueTrue;1;13;True;True;False;False;True;True;10;10;48;57.9;
+13FalseFalseFalseFalseTrueTrue;1;3;False;False;False;False;True;True;10;165;47.9;49.4;
+11FalseFalseFalseFalseTrueTrue;1;1;False;False;False;False;True;True;10;165;47.9;49.6;
+113FalseTrueTrueTrueFalseTrue;1;13;False;True;True;True;False;True;10;10;47.7;2;
+113TrueTrueTrueFalseTrueFalse;1;13;True;True;True;False;True;False;10;10;47.6;35.3;
+113FalseTrueFalseTrueFalseTrue;1;13;False;True;False;True;False;True;10;10;47.4;2.4;
+113FalseTrueFalseTrueTrueFalse;1;13;False;True;False;True;True;False;10;10;47.2;8.2;
+113TrueTrueTrueTrueFalseFalse;1;13;True;True;True;True;False;False;10;10;47;2.1;
+113FalseFalseTrueFalseTrueFalse;1;13;False;False;True;False;True;False;10;10;46.6;85.1;
+112FalseTrueTrueTrueFalseTrue;1;12;False;True;True;True;False;True;10;1663;46.4;4.5;
+113FalseTrueFalseTrueFalseFalse;1;13;False;True;False;True;False;False;10;10;46.1;2.4;
+112FalseTrueTrueTrueFalseFalse;1;12;False;True;True;True;False;False;10;1660;46.1;4.5;
+113FalseFalseFalseFalseTrueFalse;1;13;False;False;False;False;True;False;10;10;45.9;114.9;
+111FalseTrueTrueTrueFalseFalse;1;11;False;True;True;True;False;False;10;1620;45.8;4.1;
+111FalseTrueTrueTrueFalseTrue;1;11;False;True;True;True;False;True;10;1620;45.7;4.1;
+113TrueTrueFalseTrueTrueFalse;1;13;True;True;False;True;True;False;10;10;45.6;8;
+112TrueTrueTrueTrueFalseTrue;1;12;True;True;True;True;False;True;10;1873;45.5;4.9;
+113TrueTrueFalseFalseTrueFalse;1;13;True;True;False;False;True;False;10;10;45.5;57.8;
+112TrueTrueTrueTrueFalseFalse;1;12;True;True;True;True;False;False;10;1870;45.3;4.9;
+111TrueTrueTrueTrueFalseTrue;1;11;True;True;True;True;False;True;10;1805;45.1;4.6;
+111TrueTrueTrueTrueFalseFalse;1;11;True;True;True;True;False;False;10;1805;44.7;4.7;
+113FalseTrueFalseFalseFalseTrue;1;13;False;True;False;False;False;True;10;10;44.5;14.1;
+113FalseTrueFalseFalseFalseFalse;1;13;False;True;False;False;False;False;10;10;44.4;14.1;
+113TrueFalseFalseFalseTrueTrue;1;13;True;False;False;False;True;True;10;10;44.1;115.2;
+113FalseTrueTrueTrueTrueTrue;1;13;False;True;True;True;True;True;10;9;44;7.3;
+112FalseTrueTrueFalseFalseFalse;1;12;False;True;True;False;False;False;10;1659;43.9;9.6;
+112FalseTrueTrueFalseFalseTrue;1;12;False;True;True;False;False;True;10;1661;43.9;9.8;
+113FalseTrueTrueTrueTrueFalse;1;13;False;True;True;True;True;False;10;10;43.7;7.3;
+113TrueTrueTrueFalseTrueTrue;1;13;True;True;True;False;True;True;10;10;43.7;35.4;
+111FalseTrueTrueFalseFalseTrue;1;11;False;True;True;False;False;True;10;1613;43.5;9.2;
+111FalseTrueTrueTrueTrueFalse;1;11;False;True;True;True;True;False;10;2796;43.4;14.6;
+112TrueFalseTrueFalseFalseFalse;1;12;True;False;True;False;False;False;10;1690;43.4;16.7;
+112TrueTrueTrueFalseFalseTrue;1;12;True;True;True;False;False;True;10;1867;43.3;10.3;
+112FalseFalseTrueFalseFalseTrue;1;12;False;False;True;False;False;True;10;1684;43.3;16.7;
+111FalseTrueTrueFalseFalseFalse;1;11;False;True;True;False;False;False;10;1613;43.2;9.1;
+112TrueTrueTrueFalseFalseFalse;1;12;True;True;True;False;False;False;10;1866;43.2;10.2;
+112TrueFalseTrueFalseFalseTrue;1;12;True;False;True;False;False;True;10;1687;43.2;16.8;
+112FalseTrueTrueTrueTrueTrue;1;12;False;True;True;True;True;True;10;2956;43.2;17;
+112FalseTrueTrueTrueTrueFalse;1;12;False;True;True;True;True;False;10;2959;43.2;17.1;
+112FalseFalseTrueFalseFalseFalse;1;12;False;False;True;False;False;False;10;1692;43.1;16.8;
+111FalseTrueTrueTrueTrueTrue;1;11;False;True;True;True;True;True;10;2797;43;14.5;
+113TrueTrueFalseTrueTrueTrue;1;13;True;True;False;True;True;True;10;10;42.9;8;
+111FalseTrueFalseTrueFalseFalse;1;11;False;True;False;True;False;False;10;2576;42.8;6;
+112FalseTrueFalseTrueFalseFalse;1;12;False;True;False;True;False;False;10;2540;42.8;6.1;
+113FalseTrueTrueFalseFalseTrue;1;13;False;True;True;False;False;True;10;10;42.8;13.5;
+111TrueFalseTrueFalseFalseFalse;1;11;True;False;True;False;False;False;10;1626;42.8;16.5;
+113TrueFalseFalseFalseTrueFalse;1;13;True;False;False;False;True;False;10;10;42.6;115.1;
+112FalseTrueFalseTrueFalseTrue;1;12;False;True;False;True;False;True;10;2539;42.5;6.1;
+111FalseTrueFalseTrueFalseTrue;1;11;False;True;False;True;False;True;10;2578;42.5;6.2;
+112TrueTrueFalseTrueFalseFalse;1;12;True;True;False;True;False;False;10;2254;42.5;6.3;
+112TrueTrueFalseTrueFalseTrue;1;12;True;True;False;True;False;True;10;2258;42.5;6.5;
+111TrueTrueTrueFalseFalseFalse;1;11;True;True;True;False;False;False;10;1801;42.5;9.4;
+111TrueTrueTrueFalseFalseTrue;1;11;True;True;True;False;False;True;10;1800;42.5;9.8;
+111TrueTrueFalseTrueFalseFalse;1;11;True;True;False;True;False;False;10;2316;42.4;6.2;
+111TrueFalseTrueFalseFalseTrue;1;11;True;False;True;False;False;True;10;1625;42.4;16.5;
+111FalseFalseTrueFalseFalseTrue;1;11;False;False;True;False;False;True;10;1625;42.3;16.6;
+111TrueTrueTrueTrueTrueFalse;1;11;True;True;True;True;True;False;10;3033;42.3;16.9;
+112TrueTrueTrueTrueTrueTrue;1;12;True;True;True;True;True;True;10;3280;42.3;21.6;
+112FalseTrueFalseFalseFalseFalse;1;12;False;True;False;False;False;False;10;2535;42.2;11.1;
+111TrueTrueFalseTrueFalseTrue;1;11;True;True;False;True;False;True;10;2319;42.1;6.3;
+111FalseFalseTrueFalseFalseFalse;1;11;False;False;True;False;False;False;10;1622;42.1;16.5;
+111TrueTrueTrueTrueTrueTrue;1;11;True;True;True;True;True;True;10;3037;42.1;17;
+112TrueTrueFalseFalseFalseFalse;1;12;True;True;False;False;False;False;10;2258;42;11.1;
+112TrueTrueTrueTrueTrueFalse;1;12;True;True;True;True;True;False;10;3277;42;21.5;
+112TrueTrueFalseFalseFalseTrue;1;12;True;True;False;False;False;True;10;2249;41.9;11;
+112FalseTrueFalseFalseFalseTrue;1;12;False;True;False;False;False;True;10;2545;41.8;11;
+111FalseTrueFalseFalseFalseFalse;1;11;False;True;False;False;False;False;10;2573;41.4;10.8;
+111TrueTrueFalseFalseFalseTrue;1;11;True;True;False;False;False;True;10;2310;41.4;11.2;
+113TrueFalseTrueFalseTrueTrue;1;13;True;False;True;False;True;True;10;10;41.4;85.2;
+111FalseTrueFalseFalseFalseTrue;1;11;False;True;False;False;False;True;10;2566;41.3;10.9;
+112TrueFalseFalseFalseFalseFalse;1;12;True;False;False;False;False;False;10;2448;41.3;16.2;
+112TrueTrueFalseTrueTrueTrue;1;12;True;True;False;True;True;True;10;5891;41.2;65.5;
+111TrueTrueFalseFalseFalseFalse;1;11;True;True;False;False;False;False;10;2314;41.1;11;
+111TrueFalseFalseFalseFalseFalse;1;11;True;False;False;False;False;False;10;2491;41.1;15.8;
+112FalseFalseFalseFalseFalseFalse;1;12;False;False;False;False;False;False;10;2445;41.1;16.2;
+112TrueFalseFalseFalseFalseTrue;1;12;True;False;False;False;False;True;10;2450;41.1;16.2;
+112FalseTrueFalseTrueTrueFalse;1;12;False;True;False;True;True;False;10;6600;41.1;55.1;
+112TrueTrueFalseTrueTrueFalse;1;12;True;True;False;True;True;False;10;5881;41.1;64.9;
+112FalseTrueFalseTrueTrueTrue;1;12;False;True;False;True;True;True;10;6608;41;55.3;
+111FalseTrueFalseTrueTrueFalse;1;11;False;True;False;True;True;False;10;6368;40.9;45.3;
+111FalseFalseFalseFalseFalseFalse;1;11;False;False;False;False;False;False;10;2490;40.8;15.8;
+111FalseTrueFalseTrueTrueTrue;1;11;False;True;False;True;True;True;10;6372;40.8;45.9;
+111TrueTrueFalseTrueTrueFalse;1;11;True;True;False;True;True;False;10;5892;40.8;66.4;
+111TrueTrueFalseTrueTrueTrue;1;11;True;True;False;True;True;True;10;5895;40.7;65.9;
+111TrueFalseFalseFalseFalseTrue;1;11;True;False;False;False;False;True;10;2496;40.6;15.8;
+112FalseTrueTrueFalseTrueFalse;1;12;False;True;True;False;True;False;10;3691;40.6;38.3;
+112FalseFalseFalseFalseFalseTrue;1;12;False;False;False;False;False;True;10;2450;40.5;16.2;
+111FalseFalseFalseFalseFalseTrue;1;11;False;False;False;False;False;True;10;2489;40.2;15.8;
+112FalseTrueTrueFalseTrueTrue;1;12;False;True;True;False;True;True;10;3700;40.2;38;
+111FalseTrueTrueFalseTrueTrue;1;11;False;True;True;False;True;True;10;3443;40.1;34.4;
+113TrueTrueFalseTrueFalseFalse;1;13;True;True;False;True;False;False;10;10;40;2.3;
+113FalseTrueTrueFalseFalseFalse;1;13;False;True;True;False;False;False;10;10;40;13.4;
+111FalseTrueTrueFalseTrueFalse;1;11;False;True;True;False;True;False;10;3446;39.6;34.4;
+112FalseFalseTrueFalseTrueFalse;1;12;False;False;True;False;True;False;10;3396;39.6;54.8;
+111TrueTrueTrueFalseTrueFalse;1;11;True;True;True;False;True;False;10;3562;39.5;33.1;
+112TrueTrueTrueFalseTrueFalse;1;12;True;True;True;False;True;False;10;3868;39.5;39.3;
+113TrueTrueFalseTrueFalseTrue;1;13;True;True;False;True;False;True;10;10;39.4;2.3;
+112FalseFalseTrueFalseTrueTrue;1;12;False;False;True;False;True;True;10;3387;39.4;54.6;
+111TrueTrueTrueFalseTrueTrue;1;11;True;True;True;False;True;True;10;3571;39.3;33.1;
+112TrueTrueTrueFalseTrueTrue;1;12;True;True;True;False;True;True;10;3875;39.3;39.2;
+112TrueFalseTrueFalseTrueFalse;1;12;True;False;True;False;True;False;10;3394;39.2;54.7;
+111TrueFalseTrueFalseTrueTrue;1;11;True;False;True;False;True;True;10;3338;39.1;53.7;
+112TrueFalseTrueFalseTrueTrue;1;12;True;False;True;False;True;True;10;3404;39;54.7;
+111TrueFalseTrueFalseTrueFalse;1;11;True;False;True;False;True;False;10;3333;38.8;53.6;
+111FalseFalseTrueFalseTrueTrue;1;11;False;False;True;False;True;True;10;3334;38.8;53.9;
+111FalseFalseTrueFalseTrueFalse;1;11;False;False;True;False;True;False;10;3325;38.5;53.6;
+112TrueTrueFalseFalseTrueFalse;1;12;True;True;False;False;True;False;10;6695;38.4;77;
+112TrueTrueFalseFalseTrueTrue;1;12;True;True;False;False;True;True;10;6714;38.3;76.3;
+111TrueTrueFalseFalseTrueTrue;1;11;True;True;False;False;True;True;10;6819;38.3;76.5;
+112FalseFalseFalseFalseTrueTrue;1;12;False;False;False;False;True;True;10;7361;38.2;128.8;
+112FalseFalseFalseFalseTrueFalse;1;12;False;False;False;False;True;False;10;7360;38.2;130.5;
+111TrueTrueFalseFalseTrueFalse;1;11;True;True;False;False;True;False;10;6816;38.1;76.4;
+111TrueFalseFalseFalseTrueFalse;1;11;True;False;False;False;True;False;10;7112;38.1;110;
+112TrueFalseFalseFalseTrueFalse;1;12;True;False;False;False;True;False;10;7337;38.1;129.2;
+112TrueFalseFalseFalseTrueTrue;1;12;True;False;False;False;True;True;10;7353;38;129.3;
+111FalseFalseFalseFalseTrueFalse;1;11;False;False;False;False;True;False;10;7125;37.8;110.3;
+112FalseTrueFalseFalseTrueTrue;1;12;False;True;False;False;True;True;10;8429;37.7;109.6;
+112FalseTrueFalseFalseTrueFalse;1;12;False;True;False;False;True;False;10;8433;37.7;110.2;
+111FalseFalseFalseFalseTrueTrue;1;11;False;False;False;False;True;True;10;7133;37.6;110.1;
+113TrueFalseTrueFalseTrueFalse;1;13;True;False;True;False;True;False;10;10;37.5;85.2;
+111TrueFalseFalseFalseTrueTrue;1;11;True;False;False;False;True;True;10;7124;37.5;110;
+111FalseTrueFalseFalseTrueFalse;1;11;False;True;False;False;True;False;10;8013;37.4;86.6;
+111FalseTrueFalseFalseTrueTrue;1;11;False;True;False;False;True;True;10;8025;37.3;87.7;
+113TrueTrueTrueTrueTrueFalse;1;13;True;True;True;True;True;False;10;10;37.2;7.3;
+113FalseFalseTrueFalseTrueTrue;1;13;False;False;True;False;True;True;10;10;37;85.4;
+113FalseFalseFalseFalseTrueTrue;1;13;False;False;False;False;True;True;10;10;36.6;115.2;
+113TrueTrueTrueTrueTrueTrue;1;13;True;True;True;True;True;True;10;10;35.8;7.3;
+113FalseTrueFalseFalseTrueTrue;1;13;False;True;False;False;True;True;10;10;34.4;57.8;
+113FalseTrueFalseFalseTrueFalse;1;13;False;True;False;False;True;False;10;10;32.7;57.9;
+113FalseTrueTrueFalseTrueTrue;1;13;False;True;True;False;True;True;10;10;31.6;35.5;
+113FalseTrueTrueFalseTrueFalse;1;13;False;True;True;False;True;False;10;10;30.6;35.3;
+11FalseFalseFalseTrueFalseFalse;1;1;False;False;False;True;False;False;;;;;ERROR with GRAY=False and THRES=TRUE'
+11TrueFalseFalseTrueFalseFalse;1;1;True;False;False;True;False;False;;;;;ERROR with GRAY=False and THRES=TRUE'
+11FalseFalseTrueTrueFalseFalse;1;1;False;False;True;True;False;False;;;;;ERROR with GRAY=False and THRES=TRUE'
+11TrueFalseTrueTrueFalseFalse;1;1;True;False;True;True;False;False;;;;;ERROR with GRAY=False and THRES=TRUE'
+11FalseFalseFalseTrueTrueFalse;1;1;False;False;False;True;True;False;;;;;ERROR with GRAY=False and THRES=TRUE'
+11TrueFalseFalseTrueTrueFalse;1;1;True;False;False;True;True;False;;;;;ERROR with GRAY=False and THRES=TRUE'
+11FalseFalseTrueTrueTrueFalse;1;1;False;False;True;True;True;False;;;;;ERROR with GRAY=False and THRES=TRUE'
+11TrueFalseTrueTrueTrueFalse;1;1;True;False;True;True;True;False;;;;;ERROR with GRAY=False and THRES=TRUE'
+11FalseFalseFalseTrueFalseTrue;1;1;False;False;False;True;False;True;;;;;ERROR with GRAY=False and THRES=TRUE'
+11TrueFalseFalseTrueFalseTrue;1;1;True;False;False;True;False;True;;;;;ERROR with GRAY=False and THRES=TRUE'
+11FalseFalseTrueTrueFalseTrue;1;1;False;False;True;True;False;True;;;;;ERROR with GRAY=False and THRES=TRUE'
+11TrueFalseTrueTrueFalseTrue;1;1;True;False;True;True;False;True;;;;;ERROR with GRAY=False and THRES=TRUE'
+11FalseFalseFalseTrueTrueTrue;1;1;False;False;False;True;True;True;;;;;ERROR with GRAY=False and THRES=TRUE'
+11TrueFalseFalseTrueTrueTrue;1;1;True;False;False;True;True;True;;;;;ERROR with GRAY=False and THRES=TRUE'
+11FalseFalseTrueTrueTrueTrue;1;1;False;False;True;True;True;True;;;;;ERROR with GRAY=False and THRES=TRUE'
+11TrueFalseTrueTrueTrueTrue;1;1;True;False;True;True;True;True;;;;;ERROR with GRAY=False and THRES=TRUE'
+13FalseFalseFalseTrueFalseFalse;1;3;False;False;False;True;False;False;;;;;ERROR with GRAY=False and THRES=TRUE'
+13TrueFalseFalseTrueFalseFalse;1;3;True;False;False;True;False;False;;;;;ERROR with GRAY=False and THRES=TRUE'
+13FalseFalseTrueTrueFalseFalse;1;3;False;False;True;True;False;False;;;;;ERROR with GRAY=False and THRES=TRUE'
+13TrueFalseTrueTrueFalseFalse;1;3;True;False;True;True;False;False;;;;;ERROR with GRAY=False and THRES=TRUE'
+13FalseFalseFalseTrueTrueFalse;1;3;False;False;False;True;True;False;;;;;ERROR with GRAY=False and THRES=TRUE'
+13TrueFalseFalseTrueTrueFalse;1;3;True;False;False;True;True;False;;;;;ERROR with GRAY=False and THRES=TRUE'
+13FalseFalseTrueTrueTrueFalse;1;3;False;False;True;True;True;False;;;;;ERROR with GRAY=False and THRES=TRUE'
+13TrueFalseTrueTrueTrueFalse;1;3;True;False;True;True;True;False;;;;;ERROR with GRAY=False and THRES=TRUE'
+13FalseFalseFalseTrueFalseTrue;1;3;False;False;False;True;False;True;;;;;ERROR with GRAY=False and THRES=TRUE'
+13TrueFalseFalseTrueFalseTrue;1;3;True;False;False;True;False;True;;;;;ERROR with GRAY=False and THRES=TRUE'
+13FalseFalseTrueTrueFalseTrue;1;3;False;False;True;True;False;True;;;;;ERROR with GRAY=False and THRES=TRUE'
+13TrueFalseTrueTrueFalseTrue;1;3;True;False;True;True;False;True;;;;;ERROR with GRAY=False and THRES=TRUE'
+13FalseFalseFalseTrueTrueTrue;1;3;False;False;False;True;True;True;;;;;ERROR with GRAY=False and THRES=TRUE'
+13TrueFalseFalseTrueTrueTrue;1;3;True;False;False;True;True;True;;;;;ERROR with GRAY=False and THRES=TRUE'
+13FalseFalseTrueTrueTrueTrue;1;3;False;False;True;True;True;True;;;;;ERROR with GRAY=False and THRES=TRUE'
+13TrueFalseTrueTrueTrueTrue;1;3;True;False;True;True;True;True;;;;;ERROR with GRAY=False and THRES=TRUE'
+111FalseFalseFalseTrueFalseFalse;1;11;False;False;False;True;False;False;;;;;ERROR with GRAY=False and THRES=TRUE'
+111TrueFalseFalseTrueFalseFalse;1;11;True;False;False;True;False;False;;;;;ERROR with GRAY=False and THRES=TRUE'
+111FalseFalseTrueTrueFalseFalse;1;11;False;False;True;True;False;False;;;;;ERROR with GRAY=False and THRES=TRUE'
+111TrueFalseTrueTrueFalseFalse;1;11;True;False;True;True;False;False;;;;;ERROR with GRAY=False and THRES=TRUE'
+111FalseFalseFalseTrueTrueFalse;1;11;False;False;False;True;True;False;;;;;ERROR with GRAY=False and THRES=TRUE'
+111TrueFalseFalseTrueTrueFalse;1;11;True;False;False;True;True;False;;;;;ERROR with GRAY=False and THRES=TRUE'
+111FalseFalseTrueTrueTrueFalse;1;11;False;False;True;True;True;False;;;;;ERROR with GRAY=False and THRES=TRUE'
+111TrueFalseTrueTrueTrueFalse;1;11;True;False;True;True;True;False;;;;;ERROR with GRAY=False and THRES=TRUE'
+111FalseFalseFalseTrueFalseTrue;1;11;False;False;False;True;False;True;;;;;ERROR with GRAY=False and THRES=TRUE'
+111TrueFalseFalseTrueFalseTrue;1;11;True;False;False;True;False;True;;;;;ERROR with GRAY=False and THRES=TRUE'
+111FalseFalseTrueTrueFalseTrue;1;11;False;False;True;True;False;True;;;;;ERROR with GRAY=False and THRES=TRUE'
+111TrueFalseTrueTrueFalseTrue;1;11;True;False;True;True;False;True;;;;;ERROR with GRAY=False and THRES=TRUE'
+111FalseFalseFalseTrueTrueTrue;1;11;False;False;False;True;True;True;;;;;ERROR with GRAY=False and THRES=TRUE'
+111TrueFalseFalseTrueTrueTrue;1;11;True;False;False;True;True;True;;;;;ERROR with GRAY=False and THRES=TRUE'
+111FalseFalseTrueTrueTrueTrue;1;11;False;False;True;True;True;True;;;;;ERROR with GRAY=False and THRES=TRUE'
+111TrueFalseTrueTrueTrueTrue;1;11;True;False;True;True;True;True;;;;;ERROR with GRAY=False and THRES=TRUE'
+112FalseFalseFalseTrueFalseFalse;1;12;False;False;False;True;False;False;;;;;ERROR with GRAY=False and THRES=TRUE'
+112TrueFalseFalseTrueFalseFalse;1;12;True;False;False;True;False;False;;;;;ERROR with GRAY=False and THRES=TRUE'
+112FalseFalseTrueTrueFalseFalse;1;12;False;False;True;True;False;False;;;;;ERROR with GRAY=False and THRES=TRUE'
+112TrueFalseTrueTrueFalseFalse;1;12;True;False;True;True;False;False;;;;;ERROR with GRAY=False and THRES=TRUE'
+112FalseFalseFalseTrueTrueFalse;1;12;False;False;False;True;True;False;;;;;ERROR with GRAY=False and THRES=TRUE'
+112TrueFalseFalseTrueTrueFalse;1;12;True;False;False;True;True;False;;;;;ERROR with GRAY=False and THRES=TRUE'
+112FalseFalseTrueTrueTrueFalse;1;12;False;False;True;True;True;False;;;;;ERROR with GRAY=False and THRES=TRUE'
+112TrueFalseTrueTrueTrueFalse;1;12;True;False;True;True;True;False;;;;;ERROR with GRAY=False and THRES=TRUE'
+112FalseFalseFalseTrueFalseTrue;1;12;False;False;False;True;False;True;;;;;ERROR with GRAY=False and THRES=TRUE'
+112TrueFalseFalseTrueFalseTrue;1;12;True;False;False;True;False;True;;;;;ERROR with GRAY=False and THRES=TRUE'
+112FalseFalseTrueTrueFalseTrue;1;12;False;False;True;True;False;True;;;;;ERROR with GRAY=False and THRES=TRUE'
+112TrueFalseTrueTrueFalseTrue;1;12;True;False;True;True;False;True;;;;;ERROR with GRAY=False and THRES=TRUE'
+112FalseFalseFalseTrueTrueTrue;1;12;False;False;False;True;True;True;;;;;ERROR with GRAY=False and THRES=TRUE'
+112TrueFalseFalseTrueTrueTrue;1;12;True;False;False;True;True;True;;;;;ERROR with GRAY=False and THRES=TRUE'
+112FalseFalseTrueTrueTrueTrue;1;12;False;False;True;True;True;True;;;;;ERROR with GRAY=False and THRES=TRUE'
+112TrueFalseTrueTrueTrueTrue;1;12;True;False;True;True;True;True;;;;;ERROR with GRAY=False and THRES=TRUE'
+113FalseFalseFalseTrueFalseFalse;1;13;False;False;False;True;False;False;;;;;ERROR with GRAY=False and THRES=TRUE'
+113TrueFalseFalseTrueFalseFalse;1;13;True;False;False;True;False;False;;;;;ERROR with GRAY=False and THRES=TRUE'
+113FalseFalseTrueTrueFalseFalse;1;13;False;False;True;True;False;False;;;;;ERROR with GRAY=False and THRES=TRUE'
+113TrueFalseTrueTrueFalseFalse;1;13;True;False;True;True;False;False;;;;;ERROR with GRAY=False and THRES=TRUE'
+113FalseFalseFalseTrueTrueFalse;1;13;False;False;False;True;True;False;;;;;ERROR with GRAY=False and THRES=TRUE'
+113TrueFalseFalseTrueTrueFalse;1;13;True;False;False;True;True;False;;;;;ERROR with GRAY=False and THRES=TRUE'
+113FalseFalseTrueTrueTrueFalse;1;13;False;False;True;True;True;False;;;;;ERROR with GRAY=False and THRES=TRUE'
+113TrueFalseTrueTrueTrueFalse;1;13;True;False;True;True;True;False;;;;;ERROR with GRAY=False and THRES=TRUE'
+113FalseFalseFalseTrueFalseTrue;1;13;False;False;False;True;False;True;;;;;ERROR with GRAY=False and THRES=TRUE'
+113TrueFalseFalseTrueFalseTrue;1;13;True;False;False;True;False;True;;;;;ERROR with GRAY=False and THRES=TRUE'
+113FalseFalseTrueTrueFalseTrue;1;13;False;False;True;True;False;True;;;;;ERROR with GRAY=False and THRES=TRUE'
+113TrueFalseTrueTrueFalseTrue;1;13;True;False;True;True;False;True;;;;;ERROR with GRAY=False and THRES=TRUE'
+113FalseFalseFalseTrueTrueTrue;1;13;False;False;False;True;True;True;;;;;ERROR with GRAY=False and THRES=TRUE'
+113TrueFalseFalseTrueTrueTrue;1;13;True;False;False;True;True;True;;;;;ERROR with GRAY=False and THRES=TRUE'
+113FalseFalseTrueTrueTrueTrue;1;13;False;False;True;True;True;True;;;;;ERROR with GRAY=False and THRES=TRUE'
+113TrueFalseTrueTrueTrueTrue;1;13;True;False;True;True;True;True;;;;;ERROR with GRAY=False and THRES=TRUE'
