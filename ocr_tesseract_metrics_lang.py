@@ -4,7 +4,8 @@ Created on Mon Dec 28 14:10:00 2020
 
 @author: kevin
 
-!!! MAJOR ERROR: our custom trained language cannot be used in tesseract as it results in an error
+!!! MAJOR ERROR:	Our custom trained language cannot be used as it results in an error with Tesseract v5
+					It works with v4 but v5 will of course be the future
 
 This script uses tesseract's conf value during ocr processing and writes the metrics to the dedicated directory
 Tesseract returns a conf value for every string it finds in every block
